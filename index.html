@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tiếng Anh lớp 8 – Global Success</title>
+<style>
+:root{--ink:#16313b;--mut:#5f7a84;--bg:#fdf1ef;--teal:#c0392b;--sun:#ffc83d;--coral:#ff6a5b;--sky:#dff1fb;--line:#f2d8d3}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Nunito","Baloo 2","Trebuchet MS",ui-rounded,system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:2.5rem}
+button,input{font-family:inherit}
+button:focus-visible,input:focus-visible{outline:3px solid #1b6ef3;outline-offset:2px}
+header{background:var(--teal);color:#fff;padding:1.375rem 1rem 3.625rem;text-align:center}
+header h1{margin:0;font-size:1.75rem}
+header p{margin:0.25rem 0 0;opacity:.9}
+#stat{display:inline-block;margin-top:0.625rem;background:rgba(255,255,255,.22);padding:0.25rem 0.875rem;border-radius:6.1875rem;font-weight:700;font-size:0.875rem}
+main{max-width:35rem;margin:.75rem auto 0;padding:0 0.875rem}
+
+#utitle{font-weight:800;font-size:1.125rem;margin:0 0.25rem 0.625rem}
+#utitle small{display:block;color:var(--mut);font-weight:600;font-size:0.875rem}
+#tabs{display:flex;background:#fff;border-radius:0.875rem;padding:0.25rem;gap:0.25rem;border:2px solid var(--line)}
+#tabs button{flex:1;border:0;background:none;padding:0.5625rem 2px;border-radius:0.625rem;font-weight:700;font-size:0.875rem;color:var(--mut);cursor:pointer}
+#tabs button.on{background:var(--teal);color:#fff}
+.card{background:#fff;border-radius:1.5rem;padding:1.25rem 1.125rem 1.125rem;margin-top:0.75rem;text-align:center;border:2px solid var(--line);box-shadow:0 0.375rem 0 var(--line)}
+.bar{height:0.5rem;background:var(--line);border-radius:0.5625rem;overflow:hidden}
+#fill{display:block;height:100%;width:0;background:var(--coral);transition:width .3s}
+#emoji{font-size:5.75rem;line-height:1.2;margin-top:0.75rem}
+#tag{display:inline-block;padding:3px 0.75rem;border-radius:6.1875rem;font-size:0.8125rem;font-weight:800}
+.t1{background:#fadbd6;color:#8a1f14}.t2{background:#fff0c2;color:#7a5600}.t3{background:var(--sky);color:#1f5f86}
+#w{font-size:2.5rem;margin:0.5rem 0 2px;line-height:1.15;word-break:break-word}
+#ipa{font:1.375rem "Times New Roman",serif;color:var(--coral);min-height:1.75rem}
+#vn{font-size:1.3125rem;color:var(--mut);margin:0.25rem 0 0.625rem;font-weight:700}
+#res{min-height:1.5rem;font-weight:800;margin:0.375rem 0}
+.ok{color:#118a4e}.no{color:#c0392b}
+.row{display:flex;gap:0.5rem;margin-top:0.5rem}
+.row button,.big{flex:1;padding:0.8125rem 0.375rem;border:0;border-radius:0.875rem;font-weight:800;font-size:1rem;color:#fff;cursor:pointer;box-shadow:0 0.25rem 0 rgba(0,0,0,.18)}
+.row button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.b1{background:#27ae60}.b2{background:#2d7fd3}.b3{background:#7c4dbb}.b4{background:#8a9aa0}
+#know.done{background:var(--sun);color:#5a4200}
+#cnt{color:var(--mut);font-size:0.875rem;margin:0.75rem 0 0}
+.pop{animation:pop .22s}
+@keyframes pop{from{transform:scale(.97)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.pop{animation:none}#fill{transition:none}}
+#tg{width:100%;margin-top:1rem;background:var(--ink);padding:0.75rem}
+#teach{display:none;background:#fff8dc;border:2px solid #f3dd8b;border-radius:1.125rem;padding:1rem;margin-top:0.625rem}
+#teach h3{margin:0 0 0.625rem;text-align:center}
+input{width:100%;padding:0.625rem;font-size:0.9375rem;border:2px solid var(--line);border-radius:0.625rem;margin-bottom:0.5rem}
+.add{background:#e67e22;width:100%}
+#msg{color:#118a4e;font-weight:700;text-align:center;margin:0.5rem 0 0;min-height:1.25rem}
+#note{text-align:center;color:#b05a12;font-weight:700;font-size:0.875rem;margin-top:0.875rem}
+#lock{display:none;position:fixed;inset:0;background:rgba(10,30,36,.6);justify-content:center;align-items:flex-start;padding:3.75rem 1.125rem;z-index:9}
+.lc{background:#fff;border-radius:1.375rem;padding:1.625rem;max-width:26.25rem;width:100%;text-align:center;border-top:0.375rem solid var(--coral)}
+.lc h2{margin:0 0 0.5rem}
+#err{color:#c0392b;font-weight:700;min-height:1.25rem}
+
+html{-webkit-text-size-adjust:100%;font-size:calc(clamp(15px,min(.8vw + 13px,2.2vh + 8px),30px)*var(--z,1))}
+#zoom{display:inline-flex;align-items:center;gap:.25rem;background:rgba(255,255,255,.22);border-radius:6rem;padding:.2rem;margin-bottom:.6rem}
+#zoom button{border:0;border-radius:6rem;min-width:2.75rem;height:2.5rem;background:#fff;color:var(--teal);font-weight:800;font-size:1rem;cursor:pointer}
+#zoom #zv{background:none;color:#fff;min-width:3.6rem}
+#tabs{flex-wrap:wrap}
+main{max-width:64rem}
+#app{display:grid;grid-template-columns:15rem minmax(0,1fr);gap:1rem;align-items:start}
+#pane{max-width:40rem;width:100%;margin:0 auto}
+#units{background:#fff;border:2px solid var(--line);border-radius:1.25rem;padding:.5rem;display:flex;flex-direction:column;gap:.35rem;position:sticky;top:.75rem;max-height:calc(100vh - 1.5rem);overflow-y:auto}
+#units::before{content:"📚 Danh sách bài học";font-weight:800;color:var(--mut);padding:.4rem .6rem;font-size:.9rem}
+#units button{display:flex;align-items:center;gap:.6rem;width:100%;text-align:left;padding:.5rem .6rem;border:2px solid transparent;border-radius:.9rem;background:#fff;color:var(--ink);cursor:pointer;position:relative}
+#units button:hover{background:var(--bg)}
+#units button.on{background:var(--sun);border-color:var(--sun)}
+#units b{flex:none;width:2rem;height:2rem;border-radius:.6rem;background:var(--bg);display:grid;place-items:center}
+#units .on b{background:#fff}
+#units span{flex:1;min-width:0;line-height:1.25}
+#units strong{display:block;font-size:.95rem}
+#units small{color:var(--mut);font-weight:700;font-size:.8rem}
+#units .on small{color:#5a4200}
+#units i{font-style:normal;font-size:1.3rem}
+#units .lk::after{content:"🔒";font-size:.8rem}
+.nw main{max-width:36rem}
+.nw #app{display:block}
+.nw #units{position:static;flex-direction:row;overflow-x:auto;max-height:none;padding:.45rem;margin-bottom:.6rem}
+.nw #units::before{display:none}
+.nw #units button{flex:none;width:auto;padding:.3rem}
+.nw #units span,.nw #units i{display:none}
+.nw #units b{width:2.4rem;height:2.4rem}
+.nw #units .lk::after{position:absolute;right:-.25rem;top:-.4rem}
+#tabs button{flex:1 1 auto}
+
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.3rem .6rem;padding:.4rem .9rem}
+header h1{font-size:1.1rem;flex:1;text-align:left;white-space:nowrap}
+#stat{margin:0;padding:.15rem .7rem;font-size:.8rem}
+#zoom{margin:0;padding:.15rem;gap:.15rem}
+#zoom button{min-width:2.4rem;height:2.1rem;font-size:.9rem}
+#zoom #zv{min-width:2.9rem}
+
+#mode{display:flex;gap:.25rem;margin-bottom:.5rem;background:#fff;border:2px solid var(--line);border-radius:.875rem;padding:.25rem}
+#mode button{flex:1;border:0;background:none;padding:.55rem;border-radius:.625rem;font-weight:800;color:var(--mut);cursor:pointer;font-size:.95rem}
+#mode button.on{background:var(--ink);color:#fff}
+#pcard{text-align:left}
+#pcard h3{margin:.2rem 0 .5rem;text-align:center}
+.pbf{display:block;height:100%;background:var(--coral);transition:width .3s}
+.lvb{display:flex;gap:.6rem;align-items:center;width:100%;text-align:left;padding:.7rem;margin-top:.5rem;border:2px solid var(--line);border-radius:1rem;background:#fff;color:var(--ink);cursor:pointer;font-size:.95rem}
+.lvb:hover{border-color:var(--coral);background:var(--bg)}
+.lvb i{font-style:normal;font-size:1.7rem}
+.lvb span{flex:1;min-width:0}
+.lvb small{display:block;color:var(--mut);font-weight:600}
+.lvb em{font-style:normal;font-weight:800;color:#118a4e;white-space:nowrap}
+.qi{color:var(--mut);font-weight:800;font-size:.85rem;margin:.6rem 0 .2rem}
+.qp{font-size:1.35rem;font-weight:800;text-align:center;margin:.5rem 0 .8rem;line-height:1.4;word-break:break-word}
+.qp small{display:block;font-size:.95rem;color:var(--mut);font-weight:700;margin-top:.3rem}
+.op{display:block;width:100%;text-align:left;margin-top:.45rem;padding:.7rem .8rem;border:2px solid var(--line);border-radius:.9rem;background:#fff;color:var(--ink);font-weight:700;font-size:1rem;cursor:pointer}
+.op:hover{border-color:var(--coral)}
+.op.ok{background:#d9f5e5;border-color:#27ae60}
+.op.no{background:#fde0dc;border-color:#c0392b}
+.az{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;min-height:3rem;padding:.5rem;border-radius:.9rem}
+#paz{border:2px dashed var(--line);margin-bottom:.6rem}
+.tk{border:2px solid var(--line);background:#fff;border-radius:.7rem;padding:.45rem .7rem;font-weight:800;font-size:1.05rem;color:var(--ink);cursor:pointer;box-shadow:0 .2rem 0 var(--line)}
+.tk:disabled{opacity:.3;box-shadow:none}
+#pcard.d .op,#pcard.d #paz .tk,#pcard.d #pbk .tk{pointer-events:none}
+#pf{min-height:1.5rem;font-weight:800;margin:.6rem 0 0;text-align:center}
+.pb{display:flex;gap:.5rem;margin-top:.6rem}
+.wr{padding:.4rem .6rem;margin-top:.35rem;border-left:4px solid var(--coral);background:var(--bg);border-radius:.5rem;font-weight:700;font-size:.9rem}
+
+#mode button{padding:.55rem .15rem;font-size:.82rem}
+#gcard{text-align:left}#gcard h3{margin:.2rem 0 .5rem;text-align:center}#gcard h4{margin:.9rem 0 .2rem;color:var(--teal)}
+.ch{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin:.4rem 0}
+.ch button{border:2px solid var(--line);background:#fff;border-radius:.7rem;padding:.35rem .6rem;font-weight:800;color:var(--ink);cursor:pointer}
+.ch .on{background:var(--sun);border-color:var(--sun)}
+.rl{background:#fff8dc;border:2px solid #f3dd8b;border-radius:1rem;padding:.7rem;font-weight:700;font-size:.92rem;line-height:1.5;margin-bottom:.4rem}
+.ps{background:var(--bg);border-radius:.8rem;padding:.6rem;margin:.4rem 0;font-weight:600;line-height:1.5;font-size:.95rem}
+.op.sel{background:var(--sky);border-color:#2d7fd3}.op:disabled{cursor:default}
+.tmr{position:sticky;top:0;background:#fff;padding:.4rem;z-index:2;text-align:center;font-size:1.05rem}
+#gf{min-height:1.5rem;font-weight:800;margin:.6rem 0 0;text-align:center}
+
+/* Luyện nghe */
+#mode{flex-wrap:wrap}#mode button{flex:1 1 auto}
+select:focus-visible{outline:3px solid #1b6ef3;outline-offset:2px}
+.lq{background:#fff;border:2px solid var(--line);border-radius:1rem;padding:.6rem .7rem;margin:.5rem 0;text-align:left}
+.lq .qi{margin:.1rem 0 .4rem}
+.lp{border:0;border-radius:.9rem;background:#27ae60;color:#fff;font-weight:800;font-size:.95rem;padding:.55rem 1rem;cursor:pointer;box-shadow:0 .25rem 0 rgba(0,0,0,.18)}
+.lp:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.lp:disabled{opacity:.55;cursor:default;box-shadow:none}
+.sl{border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:.9rem;font-weight:800;font-size:.85rem;padding:.45rem .7rem;cursor:pointer}
+.sl.on{background:var(--sun);border-color:var(--sun);color:#5a4200}
+#ln_bar{display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;border-bottom:2px solid var(--line)}
+.pk{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0 .2rem}
+.pk button{font-size:2.6rem;line-height:1.1;min-width:4.5rem;padding:.35rem .6rem;border:3px solid var(--line);border-radius:1rem;background:#fff;cursor:pointer}
+.pk button:hover:not(:disabled){border-color:var(--coral)}
+.pk .sel{border-color:#2d7fd3;background:var(--sky)}.pk .ok{border-color:#27ae60;background:#d9f5e5}.pk .no{border-color:#c0392b;background:#fde0dc}.pk button:disabled{cursor:default}
+.fm{display:flex;align-items:center;gap:.5rem;font-weight:800}.fm input{margin:0;flex:1;min-width:0}.fm label{white-space:nowrap}
+.lq select{width:100%;margin-top:.5rem;padding:.6rem;font:inherit;font-weight:700;border:2px solid var(--line);border-radius:.7rem;background:#fff;color:var(--ink)}
+.lx{display:none;margin:.45rem 0 0;font-weight:700;font-size:.92rem;line-height:1.45}.lx.on{display:block}.lx small{color:var(--mut);font-weight:600}
+.tr{background:var(--bg);border-radius:.8rem;padding:.5rem .7rem;margin:.6rem 0}.tr summary{font-weight:800;cursor:pointer}.tr p{margin:.35rem 0;line-height:1.5;font-weight:600;font-size:.95rem}.tr small{color:var(--mut)}
+</style>
+</head>
+<body>
+<header><h1>🌟 Tiếng Anh lớp 8</h1><div id="stat"></div><div id="zoom"><button id="zm" aria-label="Thu nhỏ chữ">A−</button><button id="zv" aria-label="Về cỡ mặc định">100%</button><button id="zp" aria-label="Phóng to chữ">A+</button></div></header>
+<main><div id="app">
+<nav id="units" aria-label="Danh sách bài học"></nav>
+<div id="pane">
+<div id="utitle"></div>
+<div id="mode"><button data-m="0" class="on">🃏 Thẻ học</button><button data-m="1">✍️ Luyện tập</button><button data-m="2">📘 Ngữ pháp 8</button><button data-m="3">🎧 Luyện nghe</button><button data-m="4">📝 Kiểm tra</button></div>
+<div id="tabs">
+<button data-t="0" class="on">Tất cả</button><button data-t="1">Từ chính</button><button data-t="2">Mở rộng</button><button data-t="3">Mẫu câu</button>
+</div>
+<section class="card" id="card">
+<div class="bar"><i id="fill"></i></div>
+<div id="emoji"></div><span id="tag"></span>
+<h2 id="w"></h2><div id="ipa"></div><div id="vn"></div>
+<p id="res" aria-live="polite"></p>
+<div class="row"><button class="b1" id="bl">🔊 Nghe</button><button class="b2" id="bs">🎙 Đọc</button></div>
+<div class="row"><button class="b4" id="bp" aria-label="Từ trước">◀</button><button class="b3" id="know">⭐ Đã thuộc</button><button class="b4" id="bn" aria-label="Từ sau">▶</button></div>
+<p id="cnt"></p>
+</section>
+<section class="card" id="pcard" style="display:none"></section>
+<section class="card" id="gcard" style="display:none"></section>
+<button class="big" id="tg">👨‍🏫 Chế độ giáo viên (thêm từ)</button>
+<div id="teach">
+<h3>Thêm từ vào Unit đang chọn</h3>
+<input id="nw" placeholder="Từ tiếng Anh"><input id="ni" placeholder="Phiên âm IPA (không bắt buộc)"><input id="nm" placeholder="Nghĩa tiếng Việt">
+<button class="big add" id="ba">➕ Lưu từ</button><p id="msg"></p>
+</div>
+<p id="note"></p>
+</div></div>
+</main>
+<div id="lock"><div class="lc">
+<h2>🔒 Unit đã khóa</h2>
+<p style="color:#5f7a84">Unit 1 dùng thử miễn phí. Nhập mật khẩu để mở Unit 2 – 12.</p>
+<input type="password" id="pw" placeholder="Nhập mật khẩu bản quyền...">
+<button class="big b1" id="bk" style="width:100%;margin-bottom:.5rem">🔓 Mở khóa</button>
+<button class="big b4" id="bx" style="width:100%">Để sau</button>
+<p id="err"></p>
+</div></div>
+<script>
+const FREE=1,PW="tienhuong28011981",$=id=>document.getElementById(id);
+// Mỗi Unit: [tên, âm, emoji, từ SGK, từ mở rộng, mẫu câu]. Mục: emoji|từ|IPA|nghĩa
+const D=[
+  ["Leisure time", "Thời gian rảnh rỗi", "🏕️", "🧩|puzzle|ˈpʌzl|câu đố;🧶|DIY|ˌdiː aɪ ˈwaɪ|tự làm;🛹|skateboarding|ˈskeɪtbɔːdɪŋ|trượt ván;📱|surf the net|sɜːf ðə net|lướt mạng;📩|message|ˈmesɪdʒ|tin nhắn;🧑‍‍💻|leisure|ˈleʒə|thời gian rảnh", "🧘|relax|rɪˈlæks|thư giãn;🧵|knitting|ˈnɪtɪŋ|đan lát;🖼️|craft|krɑːft|đồ thủ công;🎮|virtual|ˈvɜːtʃuəl|ảo;🤤|addicted|əˈdɪktɪd|nghiện;🤝|socialise|ˈsəʊʃəlaɪz|giao lưu", "💬|I love making DIY crafts in my leisure time.||Tớ rất thích làm đồ thủ công vào thời gian rảnh rỗi.;💬|He is addicted to playing virtual games.||Anh ấy bị nghiện chơi game ảo.;💬|She spends a lot of time surfing the net.||Cô ấy dành nhiều thời gian lướt mạng."],
+  ["Life in the countryside", "Cuộc sống ở nông thôn", "🌾", "🌾|paddy field|ˈpædi fiːld|cánh đồng lúa;🚜|tractor|ˈtræktə|máy kéo;🐄|cattle|ˈkætl|gia súc;🧺|harvest|ˈhɑːvɪst|thu hoạch;🌅|picturesque|ˌpɪktʃəˈresk|đẹp như tranh;🐑|herd|hɜːd|chăn dắt", "🎪|village|ˈvɪlɪdʒ|ngôi làng;🧘|peaceful|ˈpiːsfl|yên bình;🧑‍🌾|farmer|ˈfɑːmə|nông dân;🚛|unload|ˌʌnˈləʊd|dỡ hàng;🌾|crop|krɒp|vụ mùa;🏞️|scenery|ˈsiːnəri|phong cảnh", "💬|Life in the countryside is very peaceful and quiet.||Cuộc sống ở nông thôn rất yên bình và tĩnh lặng.;💬|Farmers are busy harvesting their crops.||Nông dân đang bận rộn thu hoạch mùa màng.;💬|We helped them unload the rice from the tractor.||Chúng tớ đã giúp họ dỡ lúa từ máy kéo xuống."],
+  ["Teenagers", "Thanh thiếu niên", "🧑‍🤝‍🧑", "🧑‍🤝‍🧑|teenager|ˈtiːneɪdʒə|thanh thiếu niên;🏋️|pressure|ˈpreʃə|áp lực;💬|forum|ˈfɔːrəm|diễn đàn;🫂|peer|pɪə|người đồng trang lứa;🤝|club|klʌb|câu lạc bộ;🗣️|upload|ˌʌpˈləʊd|tải lên", "😰|stressed|strest|căng thẳng;😎|confident|ˈkɒnfɪdənt|tự tin;🧑‍🏫|coach|kəʊtʃ|huấn luyện viên;📚|assignment|əˈsaɪnmənt|bài tập về nhà;🥺|bully|ˈbʊli|bắt nạt;🧘|midterm|ˈmɪdtɜːm|giữa kỳ", "💬|Teenagers face a lot of pressure from their peers.||Thanh thiếu niên đối mặt với nhiều áp lực từ bạn bè đồng trang lứa.;💬|She is stressed because of her midterm exams.||Cô ấy bị căng thẳng vì các bài thi giữa kỳ.;💬|I often join a forum to discuss my problems.||Tớ thường tham gia một diễn đàn để thảo luận các vấn đề của mình."],
+  ["Ethnic groups of Viet Nam", "Các dân tộc Việt Nam", "👘", "👘|ethnic|ˈeθnɪk|dân tộc;🛖|communal house|ˈkɒmjənl haʊs|nhà rông;🌾|terraced field|ˈterəst fiːld|ruộng bậc thang;🧶|weave|wiːv|dệt;🏯|heritage|ˈherɪtɪdʒ|di sản;👗|costume|ˈkɒstjuːm|trang phục", "🎪|festival|ˈfestɪvl|lễ hội;🏔️|mountainous|ˈmaʊntənəs|miền núi;🤝|minority|maɪˈnɒrəti|thiểu số;🪵|bamboo|ˌbæmˈbuː|tre;🎶|folk dance|fəʊk dɑːns|điệu múa dân gian;🔥|stilt house|stɪlt haʊs|nhà sàn", "💬|There are 54 ethnic groups in Viet Nam.||Có 54 dân tộc ở Việt Nam.;💬|They live in stilt houses and weave their own clothes.||Họ sống trong nhà sàn và tự dệt quần áo.;💬|Terraced fields in the mountainous areas are beautiful.||Ruộng bậc thang ở những vùng miền núi rất đẹp."],
+  ["Our customs and traditions", "Phong tục và truyền thống", "🏮", "🏮|custom|ˈkʌstəm|phong tục;📜|tradition|trəˈdɪʃn|truyền thống;🤝|respect|rɪˈspekt|tôn trọng;🙇|worship|ˈwɜːʃɪp|thờ cúng;👪|generation|ˌdʒenəˈreɪʃn|thế hệ;🍽️|cutlery|ˈkʌtləri|bộ dao dĩa", "👨‍👩‍👧|offspring|ˈɒfsprɪŋ|con cái;👴|ancestor|ˈænsestə|tổ tiên;🥢|chopsticks|ˈtʃɒpstɪks|đũa;🎁|wrap|ræp|gói, bọc;🎉|celebration|ˌselɪˈbreɪʃn|sự ăn mừng;🙇|bow|baʊ|cúi chào", "💬|We should respect the customs and traditions of others.||Chúng ta nên tôn trọng phong tục và truyền thống của người khác.;💬|It is a custom to use chopsticks when eating in Viet Nam.||Dùng đũa khi ăn là một phong tục ở Việt Nam.;💬|They worship their ancestors on special occasions.||Họ thờ cúng tổ tiên vào những dịp đặc biệt."],
+  ["Lifestyles", "Phong cách sống", "🏙️", "🏙️|lifestyle|ˈlaɪfstaɪl|phong cách sống;🤝|greet|ɡriːt|chào hỏi;🐕|igloo|ˈɪɡluː|lều tuyết;❄️|dogsled|ˈdɒɡsled|xe chó kéo;🕰️|habit|ˈhæbɪt|thói quen;🍲|serve|sɜːv|phục vụ", "📱|offline|ˌɒfˈlaɪn|ngoại tuyến;🥗|diet|ˈdaɪət|chế độ ăn uống;🍜|street food|striːt fuːd|thức ăn đường phố;🚗|traffic|ˈtræfɪk|giao thông;🏃|active|ˈæktɪv|năng động;🏘️|maintain|meɪnˈteɪn|duy trì", "💬|They live an active lifestyle and eat a healthy diet.||Họ có một phong cách sống năng động và chế độ ăn uống lành mạnh.;💬|People in some areas still travel by dogsled.||Người dân ở một số khu vực vẫn đi lại bằng xe chó kéo.;💬|Street food is an important part of their lifestyle.||Thức ăn đường phố là một phần quan trọng trong phong cách sống của họ."],
+  ["Environmental protection", "Bảo vệ môi trường", "🌍", "🌍|environment|ɪnˈvaɪrənmənt|môi trường;🚮|litter|ˈlɪtə|vứt rác bừa bãi;⚠️|endangered|ɪnˈdeɪndʒəd|gặp nguy hiểm;🌳|habitat|ˈhæbɪtæt|môi trường sống;🏭|pollution|pəˈluːʃn|sự ô nhiễm;♻️|recycle|ˌriːˈsaɪkl|tái chế", "🌡️|global warming|ˈɡləʊbl ˈwɔːmɪŋ|sự nóng lên toàn cầu;🐢|species|ˈspiːʃiːz|giống loài;💨|emission|ɪˈmɪʃn|khí thải;🔋|energy|ˈenədʒi|năng lượng;🌿|protect|prəˈtekt|bảo vệ;🌊|marine|məˈriːn|thuộc về biển", "💬|We must protect endangered species and their habitats.||Chúng ta phải bảo vệ các loài có nguy cơ tuyệt chủng và môi trường sống của chúng.;💬|Air pollution is a serious problem in big cities.||Ô nhiễm không khí là một vấn đề nghiêm trọng ở các thành phố lớn.;💬|Everyone should recycle to reduce global warming.||Mọi người nên tái chế để giảm bớt sự nóng lên toàn cầu."],
+  ["Shopping", "Mua sắm", "🛍️", "🛍️|shopping|ˈʃɒpɪŋ|mua sắm;🛒|customer|ˈkʌstəmə|khách hàng;🏷️|discount|ˈdɪskaʊnt|sự giảm giá;🧾|receipt|rɪˈsiːt|biên lai;💳|credit card|ˈkredɪt kɑːd|thẻ tín dụng;💸|bargain|ˈbɑːɡɪn|mặc cả, món hời", "🎪|market|ˈmɑːkɪt|chợ;🏪|convenience store|kənˈviːniəns stɔː|cửa hàng tiện lợi;👗|fitting room|ˈfɪtɪŋ ruːm|phòng thử đồ;🛍️|shopaholic|ˌʃɒpəˈhɒlɪk|người nghiện mua sắm;🪙|price|praɪs|giá cả;📱|online|ˌɒnˈlaɪn|trực tuyến", "💬|Can I pay by credit card or in cash?||Tớ có thể trả bằng thẻ tín dụng hay tiền mặt?;💬|I found some great bargains in the local market.||Tớ đã tìm thấy vài món hời tuyệt vời ở chợ địa phương.;💬|Please keep the receipt if you want to return the item.||Vui lòng giữ lại biên lai nếu bạn muốn trả lại món đồ."],
+  ["Natural disasters", "Thiên tai", "🌪️", "🌪️|disaster|dɪˈzɑːstə|thảm họa;🌊|flood|flʌd|lũ lụt;🌋|volcano|vɒlˈkeɪnəʊ|núi lửa;💨|storm|stɔːm|cơn bão;🏚️|destroy|dɪˈstrɔɪ|phá hủy;🆘|rescue|ˈreskjuː|giải cứu", "🌍|earthquake|ˈɜːθkweɪk|động đất;🔥|wildfire|ˈwaɪldfaɪə|cháy rừng;🚑|victim|ˈvɪktɪm|nạn nhân;🌪️|tornado|tɔːˈneɪdəʊ|lốc xoáy;💧|drought|draʊt|hạn hán;⛺|temporary|ˈtemprəri|tạm thời", "💬|The earthquake destroyed many buildings in the city.||Trận động đất đã phá hủy nhiều tòa nhà trong thành phố.;💬|Rescue workers are trying to help the victims.||Lực lượng cứu hộ đang cố gắng giúp đỡ các nạn nhân.;💬|A severe drought caused a lot of damage to the crops.||Một trận hạn hán nghiêm trọng đã gây ra nhiều thiệt hại cho mùa màng."],
+  ["Communication in the future", "Giao tiếp trong tương lai", "📡", "📡|communication|kəˌmjuːnɪˈkeɪʃn|sự giao tiếp;🤖|robot|ˈrəʊbɒt|người máy;🌐|network|ˈnetwɜːk|mạng lưới;👀|telepathy|təˈlepəθi|thần giao cách cảm;📽️|holographic|ˌhɒləˈɡræfɪk|ảnh ba chiều;💬|interact|ˌɪntərˈækt|tương tác", "📱|smartphone|ˈsmɑːtfəʊn|điện thoại thông minh;💻|video conference|ˈvɪdiəʊ ˈkɒnfərəns|hội nghị truyền hình;📡|satellite|ˈsætəlaɪt|vệ tinh;📶|connection|kəˈnekʃn|sự kết nối;🗣️|translation|trænsˈleɪʃn|sự dịch thuật;🌐|cyber|ˈsaɪbə|thuộc về mạng", "💬|We will use telepathy to communicate in the future.||Chúng ta sẽ sử dụng thần giao cách cảm để giao tiếp trong tương lai.;💬|Holographic displays will make video calls more realistic.||Màn hình ảnh ba chiều sẽ khiến các cuộc gọi video chân thực hơn.;💬|Language barriers will be broken by instant translation devices.||Rào cản ngôn ngữ sẽ bị phá vỡ bởi các thiết bị dịch thuật tức thời."],
+  ["Science and technology", "Khoa học và công nghệ", "🔬", "🔬|science|ˈsaɪəns|khoa học;💻|technology|tekˈnɒlədʒi|công nghệ;🧑‍🔬|invent|ɪnˈvent|phát minh;🧪|experiment|ɪkˈsperɪmənt|thí nghiệm;🚀|advance|ədˈvɑːns|sự tiến bộ;💡|discover|dɪˈskʌvə|khám phá", "⚙️|machine|məˈʃiːn|máy móc;🚗|flying car|ˈflaɪɪŋ kɑː|ô tô bay;💻|software|ˈsɒftweə|phần mềm;🧬|genetic|dʒəˈnetɪk|thuộc về di truyền;🌍|benefit|ˈbenɪfɪt|lợi ích;🤖|AI|ˌeɪ ˈaɪ|trí tuệ nhân tạo", "💬|Science and technology have changed our lives a lot.||Khoa học và công nghệ đã thay đổi cuộc sống của chúng ta rất nhiều.;💬|Scientists are doing experiments to invent new medicines.||Các nhà khoa học đang làm thí nghiệm để phát minh ra các loại thuốc mới.;💬|AI will bring many benefits to human society.||Trí tuệ nhân tạo sẽ mang lại nhiều lợi ích cho xã hội loài người."],
+  ["Life on other planets", "Sự sống trên hành tinh khác", "🪐", "🪐|planet|ˈplænɪt|hành tinh;🛸|alien|ˈeɪliən|người ngoài hành tinh;🚀|spacecraft|ˈspeɪskrɑːft|tàu vũ trụ;👨‍🚀|astronaut|ˈæstrənɔːt|phi hành gia;🌌|galaxy|ˈɡæləksi|thiên hà;🌑|gravity|ˈɡrævəti|trọng lực", "☀️|solar system|ˈsəʊlə ˈsɪstəm|hệ mặt trời;🛰️|satellite|ˈsætəlaɪt|vệ tinh;🌍|habitable|ˈhæbɪtəbl|có thể ở được;🌠|meteor|ˈmiːtiə|sao băng;🔭|telescope|ˈtelɪskəʊp|kính viễn vọng;👽|UFO|ˌjuː ef ˈəʊ|vật thể bay không xác định", "💬|Do you think aliens exist in our solar system?||Bạn có nghĩ người ngoài hành tinh tồn tại trong hệ mặt trời của chúng ta không?;💬|Astronauts travel to space in a spacecraft.||Phi hành gia du hành vào vũ trụ bằng tàu vũ trụ.;💬|Scientists are looking for habitable planets in the galaxy.||Các nhà khoa học đang tìm kiếm các hành tinh có thể ở được trong thiên hà."]
+];
+let U=1,T=0,L=[],i=0,pend=0;
+const ls={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const unlocked=()=>ls.get("gs8_Unlocked",false)===true;
+const P=(s,t)=>s.split(";").map(x=>{const[e,w,p,m]=x.split("|");return{e,w,i:p,m,t}});
+const items=u=>{const d=D[u-1];return[...P(d[3],1),...P(d[4],2),...P(d[5],3),...(ls.get("gs8_custom",{})[u]||[])]};
+function build(){const n=$("units"),kn=ls.get("gs8_known",{});n.innerHTML="";D.forEach((d,k)=>{const a=items(k+1),b=document.createElement("button");b.title="Unit "+(k+1)+": "+d[0];b.className=(k+1==U?"on ":"")+(k+1>FREE&&!unlocked()?"lk":"");b.innerHTML="<b>"+(k+1)+"</b><span><strong>"+d[0]+"</strong><small>"+d[1]+" · "+a.filter(x=>kn[x.w]).length+"/"+a.length+"</small></span><i>"+d[2]+"</i>";b.onclick=()=>go(k+1);n.appendChild(b)})}
+function go(u){if(u>FREE&&!unlocked()){pend=u;$("pw").value="";$("err").textContent="";$("lock").style.display="flex";$("pw").focus();return}U=u;load()}
+function load(){const all=items(U),d=D[U-1];L=T?all.filter(x=>x.t==T):all;i=0;build();const o=document.querySelector("#units .on");o&&o.scrollIntoView({block:"nearest",inline:"nearest"});$("utitle").innerHTML=d[2]+" Unit "+U+": "+d[0]+"<small>"+d[1]+" · "+all.length+" mục</small>";$("note").textContent=unlocked()?"✅ Đã mở khóa Unit 1 – 12.":"🎁 Đang dùng thử Unit 1. Unit 2 – 12 cần mật khẩu.";show();stat();mode()}
+function stat(){const k=ls.get("gs8_known",{}),a=items(U);$("stat").textContent="⭐ "+a.filter(x=>k[x.w]).length+"/"+a.length+" từ đã thuộc"}
+function show(){const c=$("card");c.classList.remove("pop");void c.offsetWidth;c.classList.add("pop");$("res").textContent="";if(!L.length){$("emoji").textContent="📭";$("tag").textContent="";$("tag").className="";$("w").textContent="Chưa có từ";$("ipa").textContent="";$("vn").textContent="Mục này đang trống.";$("fill").style.width="0";$("cnt").textContent="";return}
+const x=L[i],k=ls.get("gs8_known",{})[x.w];$("emoji").textContent=x.e;$("tag").textContent=["","Từ chính","Từ mở rộng","Mẫu câu"][x.t];$("tag").className="t"+x.t;$("w").textContent=x.w;$("w").style.fontSize=x.w.length>14?"1.7rem":"";$("ipa").textContent=x.i?"/"+x.i+"/":"";$("vn").textContent=x.m;$("fill").style.width=(i+1)/L.length*100+"%";$("cnt").textContent=(i+1)+" / "+L.length;$("know").classList.toggle("done",!!k);$("know").textContent=k?"⭐ Đã thuộc":"☆ Chưa thuộc"}
+const step=n=>{if(L.length){i=(i+n+L.length)%L.length;show()}};
+function listen(){if(!L.length||!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(L[i].w);u.lang="en-US";u.rate=.8;speechSynthesis.speak(u)}
+function speak(){if(!L.length)return;const r=$("res"),S=window.SpeechRecognition||window.webkitSpeechRecognition;r.className="";if(!S){r.textContent="Trình duyệt chưa hỗ trợ. Hãy dùng Google Chrome!";return}
+r.textContent="Đang nghe... hãy nói vào micro";const g=new S();g.lang="en-US";const n=s=>s.toLowerCase().replace(/[^a-z\s]/g,"").trim();
+g.onresult=e=>{const t=e.results[0][0].transcript;if(n(t)===n(L[i].w)){r.textContent="🎉 Chính xác!";r.className="ok"}else{r.textContent="Chưa đúng. Bạn đọc là: "+t;r.className="no"}};
+g.onerror=()=>{r.textContent="Không nghe được. Hãy cho phép micro và thử lại.";r.className="no"};g.start()}
+function know(){if(!L.length)return;const k=ls.get("gs8_known",{}),w=L[i].w;if(k[w])delete k[w];else k[w]=1;ls.set("gs8_known",k);show();stat();build()}
+function add(){const w=$("nw").value.trim(),m=$("nm").value.trim(),p=$("ni").value.trim();if(!w||!m){alert("Vui lòng nhập từ tiếng Anh và nghĩa!");return}const c=ls.get("gs8_custom",{});(c[U]=c[U]||[]).push({e:"✨",w,i:p,m,t:2});ls.set("gs8_custom",c);["nw","ni","nm"].forEach(k=>$(k).value="");load();$("msg").textContent="✔ Đã thêm vào Unit "+U;setTimeout(()=>$("msg").textContent="",3000)}
+function check(){if($("pw").value===PW){ls.set("gs8_Unlocked",true);$("lock").style.display="none";U=pend||U;pend=0;load()}else $("err").textContent="❌ Mật khẩu chưa đúng, hãy thử lại!"}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{T=+b.dataset.t;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x==b));load()});
+$("bl").onclick=listen;$("bs").onclick=speak;$("bp").onclick=()=>step(-1);$("bn").onclick=()=>step(1);$("know").onclick=know;$("ba").onclick=add;$("bk").onclick=check;
+$("bx").onclick=()=>{$("lock").style.display="none";pend=0};
+$("tg").onclick=()=>{const t=$("teach");t.style.display=t.style.display==="block"?"none":"block"};
+$("pw").onkeydown=e=>{if(e.key==="Enter")check()};
+document.onkeydown=e=>{if(e.target.tagName==="INPUT"||e.target.tagName==="SELECT")return;if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)};
+function fit(){const r=parseFloat(getComputedStyle(document.documentElement).fontSize);document.body.classList.toggle("nw",innerWidth<r*46)}onresize=fit;
+const ZK="gs8_zoom";
+function zoom(z){z=Math.min(1.8,Math.max(.8,Math.round(z*10)/10));ls.set(ZK,z);document.documentElement.style.setProperty("--z",z);$("zv").textContent=Math.round(z*100)+"%";fit()}
+$("zm").onclick=()=>zoom(ls.get(ZK,1)-.1);$("zp").onclick=()=>zoom(ls.get(ZK,1)+.1);$("zv").onclick=()=>zoom(1);zoom(ls.get(ZK,1));
+/* ===== LUYỆN TẬP: bài tập tự sinh từ dữ liệu từng Unit (Từ chính / Từ mở rộng / Mẫu câu) ===== */
+let M=0,Q=[],qi=0,sc=0,ok1=0,N=10,st=0,wr=[],lv=1,cq=null,sel=[];
+const LV=[["🌱","Trung bình","Nhận biết: chọn đáp án, có hình gợi ý"],["🌿","Khá","Thông hiểu: nghe, phiên âm, xếp chữ – xếp câu"],["🌳","Giỏi","Vận dụng: tự gõ từ/câu, gợi ý chữ cái đầu"],["🏆","Xuất sắc","Vận dụng cao: không gợi ý, dịch Việt→Anh, chép chính tả, từ trong ngữ cảnh"]];
+const TTS=!!window.speechSynthesis,R=a=>a[Math.floor(Math.random()*a.length)],sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nz=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9'\s]/g,"").replace(/\s+/g," ").trim();
+const vocab=u=>items(u).filter(x=>x.t<3),sens=u=>items(u).filter(x=>x.t==3),ip=x=>x.i?"/"+x.i+"/":"";
+const say=t=>{if(!TTS)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.8;speechSynthesis.speak(u)};
+// Cặp ngữ pháp chỉ có MỘT đáp án đúng khi có nghĩa tiếng Việt đi kèm
+const PR={is:"are",are:"is",do:"does",does:"do",has:"have",have:"has",will:"won't","won't":"will",can:"can't","can't":"can",should:"shouldn't","shouldn't":"should"};
+const gr=w=>w=="than"||PR.hasOwnProperty(w);
+const pool=(S,all)=>{const a=[];for(let k=1;k<=D.length;k++)if(all||k==U)a.push(...(S?sens(k):vocab(k)));return a};
+// Lấy n đáp án nhiễu khác nhau: ưu tiên cùng Unit, sau đó các Unit khác
+function dis(x,f,n,ok,S){const s=new Set([f(x)]),o=[];for(const y of sh(pool(S)).concat(sh(pool(S,1)))){const v=f(y);if(v&&!s.has(v)&&(!ok||ok(y))){s.add(v);o.push(v);if(o.length>=n)break}}return o}
+const wrongs=(c,s)=>{const l=c.toLowerCase();if(l=="than")return["then","that"];if(PR.hasOwnProperty(l))return[PR[l]];const sl=s.toLowerCase();return[...new Set(sh(pool(0)).concat(sh(pool(0,1))).map(y=>y.w).filter(w=>!/ /.test(w)&&w.toLowerCase()!=l&&sl.indexOf(w.toLowerCase())<0))].slice(0,3)};
+// Tách câu dài thành từng câu nhỏ (EN và VI khớp số câu) để bài tập không quá dài
+function seg(x){const f=s=>(s.match(/[^.?!]+[.?!]*/g)||[s]).map(a=>a.trim()).filter(Boolean),e=f(x.w),v=f(x.m);if(e.length!=v.length||e.length<2)return{w:x.w,m:x.m};const k=e.map((s,j)=>j).filter(j=>e[j].split(" ").length>3),j=k.length?R(k):0;return{w:e[j],m:v[j]}}
+// Chọn từ để khoét: cấp thấp ưu tiên từ vựng của Unit; cấp cao ưu tiên ngữ pháp (is/are, do/does, can/can't, will/won't, should/shouldn't, than)
+function blank(s,hi){const t=s.split(" "),vw=new Set(vocab(U).map(y=>y.w.toLowerCase())),r=t.map((w,j)=>{const m=w.match(/^[^A-Za-z]*([A-Za-z'-]+)/);return m?[j,m[1]]:0}).filter(Boolean),f=g=>r.filter(p=>g(p[1].toLowerCase())),A=f(gr),B=f(w=>vw.has(w)),C=f(w=>w.length>3&&!gr(w)),a=(hi?[A,B,C]:[B,C,A]).find(z=>z.length);if(!a)return null;const[j,c]=R(a),m=t[j].match(/^([^A-Za-z]*)([A-Za-z'-]+)(.*)$/);t[j]=m[1]+"_____"+m[3];return{s:t.join(" "),c}}
+const mc=(q,r,w)=>{if(!w.length)return null;const o=sh([r,...w]);return{...q,k:"mc",o,a:o.indexOf(r)}};
+const shuf=a=>{let z=sh(a),n=0;while(z.join(" ")==a.join(" ")&&n++<9)z=sh(a);return z};
+const G={
+// ----- Từ chính / Từ mở rộng -----
+vm:x=>mc({t:"Chọn nghĩa đúng của từ",p:x.w,s:lv==1?ip(x):"",say:x.w},x.m,dis(x,y=>y.m,3)),
+mv:x=>mc({t:"Chọn từ tiếng Anh đúng",p:x.m},x.w,dis(x,y=>y.w,3)),
+em:x=>x.e=="✨"?null:mc({t:"Hình này là gì?",em:x.e},x.w,dis(x,y=>y.w,3,y=>y.e!=x.e&&y.e!="✨")),
+ls:x=>TTS?mc({t:"Nghe và chọn từ đúng",say:x.w},x.w,dis(x,y=>y.w,3)):null,
+ip:x=>x.i?mc({t:"Chọn phiên âm đúng",p:x.w,say:x.w},ip(x),dis(x,y=>y.i,3).map(v=>"/"+v+"/")):null,
+sc:x=>{const sp=x.w.includes(" "),a=sp?x.w.split(" "):x.w.split("");if(a.length<3)return null;return{k:"tk",t:sp?"Sắp xếp các từ thành cụm đúng":"Sắp xếp chữ cái thành từ đúng",em:x.e,p:x.m,tk:shuf(a),ans:x.w,j:sp?" ":""}},
+ty:x=>({k:"ty",t:"Gõ từ tiếng Anh có nghĩa sau",em:lv<4?x.e:"",p:x.m,h:lv==3?"Gợi ý: "+x.w.split(" ").map(w=>w[0]+"_".repeat(w.length-1)).join("  "):"",ans:[...new Set(vocab(U).filter(y=>y.m==x.m).map(y=>y.w))],sp:1}),
+dc:x=>TTS?{k:"ty",t:"Nghe và viết lại từ",say:x.w,ans:[x.w],sp:1}:null,
+vc:x=>{const re=new RegExp("(^|[^A-Za-z])"+x.w.replace(/[.*+?^${}()|[\]\\-]/g,"\\$&")+"(?![A-Za-z])","i"),y=R(sh(pool(1,1)).filter(y=>re.test(y.w)).length?sh(pool(1,1)).filter(y=>re.test(y.w)):[0]);return y?{k:"ty",t:"Điền từ vào câu (dựa vào nghĩa tiếng Việt)",p:y.w.replace(re,(m,a)=>a+"_____"),s:y.m,h:lv==3?`Gợi ý: bắt đầu bằng "${x.w[0]}"`:"",ans:[x.w],sp:1}:null},
+// ----- Mẫu câu -----
+ct:x=>mc({t:"Chọn bản dịch đúng",p:x.w,say:x.w},x.m,dis(x,y=>y.m,3,0,1)),
+sw:x=>{const g=seg(x),b=blank(g.w,lv>2);if(!b)return null;const cp=/^[A-Z]/.test(b.c);return mc({t:"Chọn từ điền vào chỗ trống (theo nghĩa tiếng Việt)",p:b.s,s:g.m},b.c,wrongs(b.c,g.w).map(v=>cp?v[0].toUpperCase()+v.slice(1):v))},
+sf:x=>{const g=seg(x),b=blank(g.w,lv>2);return b?{k:"ty",t:"Điền từ vào chỗ trống (theo nghĩa tiếng Việt)",p:b.s,s:g.m,h:lv==3?`Gợi ý: bắt đầu bằng "${b.c[0]}"`:"",ans:[b.c]}:null},
+so:x=>{const g=seg(x),a=g.w.split(" ");return a.length<4?null:{k:"tk",t:"Sắp xếp các từ thành câu đúng",p:g.m,tk:shuf(a),ans:g.w,j:" "}},
+tr:x=>{const g=seg(x),a=g.w.split(" "),has=new Set(a.map(w=>w.toLowerCase())),ex=sh(pool(1,1).filter(y=>y.t==3).flatMap(y=>y.w.split(" "))).filter((w,j,r)=>!has.has(w.toLowerCase())&&r.indexOf(w)==j).slice(0,3);return{k:"tk",t:"Dịch sang tiếng Anh (có 3 từ thừa)",p:g.m,tk:sh(a.concat(ex)),ans:g.w,j:" "}},
+ds:x=>{if(!TTS)return null;const g=seg(x);return{k:"ty",t:"Nghe và chép lại câu",s:lv<4?g.m:"",say:g.w,ans:[g.w]}}
+};
+// Mỗi cấp một nhóm dạng bài: nhận biết → thông hiểu → vận dụng → vận dụng cao
+const VP=[["vm","em","mv"],["ls","mv","sc","ip"],["ty","dc","ip","sc","vc"],["ty","dc","ip","vc"]],SP=[["ct","sw"],["sw","so","ct"],["sf","so","ds"],["tr","sf","ds"]];
+function mk(x,av){const v=x.t<3;for(const g of sh((v?VP:SP)[lv-1].filter(g=>g!=av)).concat(v?["vm","mv","ty"]:["ct","so","sf"])){const q=G[g](x);if(q)return{...q,x,g}}return{k:"ty",t:"Chép lại cho đúng",p:x.w,ans:[x.w],x,g:"cp"}}
+// Lặp cách quãng (Leitner): mục càng yếu (hộp thấp) càng dễ được chọn
+function begin(l){lv=l;const bx=ls.get("gs8_box",{}),t=L.map(x=>[(bx[x.w]||0)+Math.random()*2.5,x]).sort((a,b)=>a[0]-b[0]).map(a=>a[1]),lg={};N=Math.min(10,L.length*3);Q=[];for(let j=0;j<N;j++){const x=t[j%t.length],q=mk(x,lg[x.w]);lg[x.w]=q.g;Q.push(q)}qi=sc=ok1=st=0;wr=[];ask()}
+function rt(){const q=cq,a=$("paz");a.innerHTML=sel.map(j=>`<button class="tk" data-j="${j}">${esc(q.tk[j])}</button>`).join("");$("pbk").innerHTML=q.tk.map((w,j)=>`<button class="tk" data-j="${j}"${sel.includes(j)?" disabled":""}>${esc(w)}</button>`).join("");a.querySelectorAll(".tk").forEach(b=>b.onclick=()=>{sel=sel.filter(j=>j!=+b.dataset.j);rt()});$("pbk").querySelectorAll(".tk").forEach(b=>b.onclick=()=>{sel.push(+b.dataset.j);rt()})}
+function ask(){if(qi>=Q.length)return fin();const q=cq=Q[qi],c=$("pcard");sel=[];c.classList.remove("d");
+c.innerHTML=`<div class="bar"><i class="pbf" style="width:${qi/Q.length*100}%"></i></div><p class="qi">${LV[lv-1][0]} ${q.r?"Ôn lại câu sai":"Câu "+(qi+1)+"/"+Q.length} · ⭐ ${sc} · 🔥 ${st}</p><p class="qi" style="color:var(--teal);margin-top:0">${q.t}</p><div class="qp">${q.em?`<div style="font-size:4rem;line-height:1.2">${q.em}</div>`:""}${esc(q.p||"")}${q.s?`<small>${esc(q.s)}</small>`:""}${q.say?` <button class="tk" id="pl" aria-label="Nghe">🔊</button>`:""}</div>`+
+(q.k=="mc"?q.o.map((o,j)=>`<button class="op" data-j="${j}">${esc(o)}</button>`).join(""):q.k=="ty"?`<input id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Gõ đáp án...">${q.h?`<p class="qi">${esc(q.h)}</p>`:""}`:`<div class="az" id="paz"></div><div class="az" id="pbk" style="border:0"></div>`)+
+`<p id="pf" aria-live="polite"></p><div class="pb"><button class="big b2" id="pc"${q.k=="mc"?' style="display:none"':""}>✔ Kiểm tra</button></div>`;
+if(q.say){$("pl").onclick=()=>say(q.say);say(q.say)}
+const pc=$("pc");
+if(q.k=="mc")c.querySelectorAll(".op").forEach(b=>b.onclick=()=>grade(+b.dataset.j));
+else if(q.k=="ty"){const t=$("ti");t.focus();t.onkeydown=e=>{if(e.key==="Enter")grade(t.value)};pc.onclick=()=>grade(t.value)}
+else{rt();pc.onclick=()=>sel.length&&grade(sel.map(j=>q.tk[j]).join(q.j))}}
+function grade(v){const q=cq;if(q.d)return;let r,g=0;
+if(q.k=="mc")r=v==q.a;else if(q.k=="tk")r=v==q.ans;else{if(!String(v).trim())return;const f=q.sp?s=>nz(s).replace(/\s/g,""):nz;r=q.ans.some(a=>f(a)==f(v))}
+q.d=1;const x=q.x,w=x.w;
+if(!q.r){const b=ls.get("gs8_box",{});b[w]=r?Math.min(4,(b[w]||0)+1):0;ls.set("gs8_box",b);if(r)ok1++;else wr.push(q)}
+if(r){st++;g=10+Math.min(st,5);sc+=g}else{st=0;if(!q.r)Q.push({...mk(x,q.g),r:1})}
+const c=$("pcard");c.classList.add("d");
+if(q.k=="mc")c.querySelectorAll(".op").forEach((b,j)=>{if(j==q.a)b.classList.add("ok");else if(j==v)b.classList.add("no")});
+else if(q.k=="ty"){$("ti").disabled=true;$("ti").style.borderColor=r?"#27ae60":"#c0392b"}
+const ans=q.k=="mc"?q.o[q.a]:q.k=="tk"?q.ans:q.ans[0],inf=x.t<3?x.e+" "+w+(x.i?" /"+x.i+"/":"")+" = "+x.m:w+" = "+x.m;
+$("pf").className=r?"ok":"no";
+$("pf").innerHTML=(r?`✅ Chính xác! +${g}${st>2?" 🔥":""}`:`❌ Đáp án đúng: <b>${esc(ans)}</b>`)+`<small style="display:block;color:var(--mut);font-weight:600">${esc(inf)}</small>`;
+const pc=$("pc");pc.style.display="";pc.textContent=qi+1>=Q.length?"🏁 Xem kết quả":"Tiếp ▶";pc.onclick=()=>{qi++;ask()};pc.focus()}
+function fin(){const p=Math.round(ok1/N*100),k=U+"-"+T+"-"+lv,b=ls.get("gs8_pb",{});if(p>(b[k]||0)){b[k]=p;ls.set("gs8_pb",b)}
+const mp=new Map(wr.map(q=>[q.x.w,q.x])),msg=p>=80?(lv<4?"Rất tốt! Hãy thử cấp cao hơn.":"Xuất sắc! Bạn đã làm chủ phần này."):p>=60?"Khá ổn – luyện thêm để đạt 80% nhé.":"Hãy xem lại thẻ học rồi làm lại nhé.",c=$("pcard");
+c.classList.remove("d");
+c.innerHTML=`<h3>${p>=80?"🏆":p>=60?"👍":"💪"} ${ok1}/${N} câu đúng (${p}%)</h3><p style="text-align:center;font-weight:700">⭐ ${sc} điểm · ${msg}</p>`+(mp.size?`<p class="qi">Cần ôn lại:</p>`+[...mp.values()].map(x=>`<div class="wr">${esc(x.t<3?x.e+" "+x.w+(x.i?" /"+x.i+"/":"")+" = "+x.m:x.w+" = "+x.m)}</div>`).join(""):"")+`<div class="pb"><button class="big b2" id="r1">🔁 Làm lại</button>${p>=80&&lv<4?'<button class="big b1" id="r2">⬆️ Lên cấp</button>':""}</div><div class="pb"><button class="big b3" id="r3">🎚️ Chọn cấp khác</button><button class="big b4" id="r4">🃏 Thẻ học</button></div>`;
+$("r1").onclick=()=>begin(lv);if($("r2"))$("r2").onclick=()=>begin(lv+1);$("r3").onclick=pstart;$("r4").onclick=()=>{M=0;mode()}}
+function pstart(){const c=$("pcard"),nm=["Tất cả","Từ chính","Từ mở rộng","Mẫu câu"][T],b=ls.get("gs8_pb",{});c.classList.remove("d");
+if(!L.length){c.innerHTML="<h3>📭 Mục này đang trống</h3>";return}
+const rec=[1,2,3,4].find(l=>(b[U+"-"+T+"-"+l]||0)<80)||4;
+c.innerHTML=`<h3>✍️ Luyện tập · Unit ${U} · ${nm}</h3><p class="qi" style="text-align:center">${Math.min(10,L.length*3)} câu/lượt · câu sai được hỏi lại bằng dạng khác · đạt từ 80% thì lên cấp</p>`+LV.map((v,j)=>{const s=b[U+"-"+T+"-"+(j+1)];return`<button class="lvb" data-l="${j+1}"><i>${v[0]}</i><span><strong>${v[1]}</strong><small>${v[2]}</small></span><em>${j+1==rec?"👉 ":""}${s!=null?(s>=80?"✅ ":"")+s+"%":""}</em></button>`}).join("");
+c.querySelectorAll(".lvb").forEach(x=>x.onclick=()=>begin(+x.dataset.l))}
+function mode(){const g=M>1;$("app").style.display=g?"block":"";$("units").style.display=g?"none":"";$("utitle").style.display=g?"none":"";$("card").style.display=M?"none":"";$("pcard").style.display=M==1?"":"none";$("gcard").style.display=g?"":"none";$("tabs").style.display=g?"none":"";$("tg").style.display=M?"none":"";clearInterval(tt);lstop();if(M){$("teach").style.display="none";[pstart,gstart,lstart,tstart][M-1]()}document.querySelectorAll("#mode button").forEach(b=>b.classList.toggle("on",+b.dataset.m==M))}
+document.querySelectorAll("#mode button").forEach(b=>b.onclick=()=>{M=+b.dataset.m;mode()});
+
+/* ===== NGỮ PHÁP & KIỂM TRA TIẾNG ANH 10 (Global Success) ===== */
+let gu=0,GQ=[],gi=0,gs=0,gk=0,gw=[],gl=1,tt=0,tl=0,tn=0,TQ=[];
+const GL=["Chọn đáp án đúng dạng","Trắc nghiệm + điền dạng đúng","Vận dụng: tự luận & trắc nghiệm","Vận dụng cao: viết lại, biến đổi câu"];
+const GU=[
+["Leisure time","<b>love, like, enjoy, hate, prefer, don't mind</b> + V-ing (enjoy, don't mind chỉ + V-ing). like/love/hate/prefer cũng có thể + to V. <b>would like/love</b> + to V.",`
+1|I enjoy ___ to music in my free time.|listening|listen|to listen|listened
+2|She would like ___ a new hobby.|to start|starting|start|started
+2|(read) My brother loves ___ comic books.|reading
+3|We don't mind ___ the dishes after dinner.|doing|to do|do|did
+3|(go) Would you like ___ to the cinema tonight?|to go
+4|(play) Tom hates ___ computer games all day. He prefers going out.|playing/to play`],
+["Life in the countryside","Tính từ ngắn: <b>adj-er + than</b>; tính từ dài: <b>more + adj + than</b>; trạng từ: <b>more/less + adv</b>. Bất quy tắc: good→better, bad→worse.",`
+1|Life in the countryside is ___ than life in the city.|more peaceful|peacefuler|most peaceful|peaceful
+2|My grandfather drives ___ than my father.|more slowly|more slow|slowest|slowlier
+2|(cheap) Food in the village is ___ than in the town.|cheaper
+3|The air here is ___ than the air in Ha Noi.|better|gooder|more good|best
+3|(carefully) She works ___ than her sister.|more carefully
+4|The city is noisier than the village. → The village is ___ noisy than the city.|less`],
+["Teenagers","<b>should / shouldn't</b>: lời khuyên; <b>must</b>: bắt buộc; <b>mustn't</b>: cấm đoán. Sau đó là động từ nguyên mẫu.",`
+1|You ___ eat more vegetables. They are healthy.|should|shouldn't|mustn't|are
+2|Teenagers ___ stay up too late. It is bad for health.|shouldn't|should|must|can
+2|(not/should) Students ___ copy their friends' homework.|shouldn't/should not
+3|You ___ use your phone in the exam room. It is not allowed.|mustn't|should|can|will
+3|(should/must) What ___ I do to keep fit?|should
+4|It's a good idea for teens to sleep eight hours. → Teens ___ sleep eight hours. (should)|should`],
+["Ethnic groups of Viet Nam","<b>Yes/No</b>: Do/Does/Is/Are/Can + S + V? <b>Wh-</b>: What, Where, When, Who, Which, How many/much + trợ động từ + S + V.",`
+1|___ ethnic groups are there in Viet Nam?|How many|How much|How long|How often
+2|___ do the Thai people live?|Where|Who|When|How many
+2|(Do/Does) ___ your friend speak Tay?|Does
+3|___ is the Ede people's traditional house made of?|What|Who|Where|When
+3|(How much/How many) ___ rice do they grow each year?|How much
+4|They celebrate Gong Festival in spring. → ___ do they celebrate Gong Festival?|When`],
+["Our customs and traditions","<b>because</b>: lý do; <b>so</b>: kết quả; <b>but</b>: đối lập; <b>although/though</b>: mặc dù; <b>when/while</b>: thời gian.",`
+1|She was very tired, ___ she still went to the festival.|but|so|because|when
+2|___ it was raining, we still had the parade.|Although|Because|So|But
+2|(because/so) It was Tet, ___ the streets were crowded.|so
+3|He couldn't come ___ he was ill.|because|although|so|but
+3|(Although/Because) ___ the festival is old, many young people still join it.|Although
+4|The costume is expensive. People still buy it. → ___ the costume is expensive, people still buy it.|Although/Though`],
+["Lifestyles","<b>Hiện tại hoàn thành</b>: have/has + V3. <b>since</b> + mốc thời gian, <b>for</b> + khoảng thời gian; ever, never, already, yet, just.",`
+1|I ___ my friend for five years.|have known|know|knew|am knowing
+2|She has lived here ___ 2020.|since|for|ago|from
+2|(not/eat) I ___ sushi before.|haven't eaten/have not eaten
+3|They ___ vegetarian since last year.|have been|were|are being|have being
+3|(finish) Mai has just ___ her workout.|finished
+4|(live) My uncle ___ in the city for ten years, so he is used to the noise.|has lived`],
+["Environmental protection","<b>Câu điều kiện loại 1</b>: If + hiện tại đơn, S + will/won't + V (điều có thể xảy ra ở tương lai).",`
+1|If we recycle more, we ___ less waste.|will produce|would produce|produced|are producing
+2|If you don't turn off the lights tonight, you ___ a lot of electricity.|will waste|wasted|would waste|are wasted
+2|(plant) If people ___ more trees, the air will be cleaner.|plant
+3|We will keep the river clean if everyone ___ rubbish into it.|doesn't throw|won't throw|didn't throw|not throw
+3|(not use) If we ___ plastic bags, we will save the sea.|don't use/do not use
+4|(postpone) If it rains tomorrow, we ___ the clean-up day.|will postpone/'ll postpone`],
+["Shopping","<b>a/an</b>: chưa xác định; <b>the</b>: đã xác định; <b>some</b> (khẳng định), <b>any</b> (phủ định, nghi vấn); <b>much</b> + N không đếm được; <b>many</b> + N đếm được.",`
+1|I bought ___ umbrella at the market.|an|a|the|some
+2|We don't have ___ milk at home.|any|some|many|a
+2|(much/many) How ___ shops are there in this mall?|many
+3|Is there ___ discount on this shirt?|any|many|few|these
+3|(a/the) I bought a hat and a scarf. ___ hat was cheaper.|The
+4|(some/any) I'd like ___ apples, please.|some`],
+["Natural disasters","<b>Quá khứ tiếp diễn</b>: was/were + V-ing. <b>when</b> + quá khứ đơn (hành động xen vào); <b>while</b> + quá khứ tiếp diễn (hành động đang diễn ra).",`
+1|We ___ dinner when the earthquake started.|were having|had|have|are having
+2|While she ___ TV, the storm began.|was watching|watched|watches|is watching
+2|(sleep) The children ___ when the flood came.|were sleeping
+3|I was walking home ___ it started to rain.|when|while|because|so
+3|(take) While they ___ photos, the volcano erupted.|were taking
+4|(watch) She ___ the news when the phone rang.|was watching`],
+["Communication in the future","<b>Đại từ sở hữu</b>: mine, yours, his, hers, ours, theirs (thay cho tính từ sở hữu + danh từ). <b>will + V</b>: dự đoán, quyết định tức thời.",`
+1|This phone is not yours. It is ___.|mine|my|me|I
+2|Our class is big. ___ is bigger.|Theirs|They|Their|Them
+2|(use) In the future, people ___ holograms to talk.|will use
+3|That is not my pen. ___ is on the table.|Mine|My|Me|I
+3|(not/will) Robots ___ replace teachers completely.|won't/will not
+4|This is my book. = This book is ___.|mine`],
+["Science and technology","<b>Bị động</b>: S + be + V3 (+ by O). Hiện tại đơn: am/is/are + V3; quá khứ đơn: was/were + V3.",`
+1|English ___ in many countries.|is spoken|speaks|spoken|is speaking
+2|The first robot ___ in 1961.|was built|built|is built|were built
+2|(use) Computers ___ in most schools today.|are used
+3|These cars ___ by solar energy.|are powered|power|powered|are powering
+3|(invent) The telephone ___ by Bell in 1876.|was invented
+4|They make smartphones in Viet Nam. → Smartphones ___ in Viet Nam.|are made`],
+["Life on other planets","<b>be going to + V</b>: kế hoạch, dự đoán có căn cứ; <b>will + V</b>: dự đoán chung, quyết định tức thời.",`
+1|Look at those clouds! It ___ rain.|is going to|will|did|has
+2|I ___ visit Mars one day. It is my plan.|am going to|went to|am go to|going to
+2|(visit) We ___ the space museum tomorrow. We have bought the tickets.|are going to visit
+3|Maybe aliens ___ on another planet someday.|will live|are living|lived|live
+3|(be) Scientists think life on Mars ___ possible one day.|will be
+4|(not/going to) Tom ___ travel to space. He is afraid of heights.|isn't going to/is not going to`]
+];
+GU.forEach(u=>u[2]=u[2].trim().split("\n"));
+function gstart(){const c=$("gcard"),b=ls.get("g8_pb",{});
+c.classList.remove("d");
+c.innerHTML=`<h3>📘 Ngữ pháp Tiếng Anh 8</h3><div class="ch">`+GU.map((u,k)=>`<button data-u="${k}" class="${k==gu?"on":""}">${k+1}${k>0&&!unlocked()?"🔒":""}</button>`).join("")+`<button data-u="-1" class="${gu<0?"on":""}">★ Tất cả</button></div>`+(gu>=0?`<p class="qi" style="text-align:center">Unit ${gu+1}: ${GU[gu][0]}</p><div class="rl">${GU[gu][1]}</div>`:`<p class="qi" style="text-align:center">Trộn câu hỏi của các Unit đã mở</p>`)+LV.map((v,j)=>`<button class="lvb" data-l="${j+1}"><i>${v[0]}</i><span><strong>${v[1]}</strong><small>${GL[j]}</small></span><em>${b[gu+"-"+(j+1)]!=null?b[gu+"-"+(j+1)]+"%":""}</em></button>`).join("");
+c.querySelectorAll(".ch button").forEach(x=>x.onclick=()=>{const k=+x.dataset.u;if(k>0&&!unlocked()){$("pw").value="";$("err").textContent="";$("lock").style.display="flex";$("pw").focus();pend=0;return}gu=k;gstart()});
+c.querySelectorAll(".lvb").forEach(x=>x.onclick=()=>gbegin(+x.dataset.l))}
+function gbegin(l){gl=l;const a=[];GU.forEach((u,k)=>{if(gu<0?(k==0||unlocked()):k==gu)u[2].forEach(t=>{const[v,q,x,...d]=t.split("|");if(+v==l)a.push({u:k,q,a:x,d})})});GQ=sh(a).slice(0,10);gi=gs=gk=0;gw=[];gask()}
+function gask(){if(gi>=GQ.length)return gfin();const q=GQ[gi],c=$("gcard");q.o=q.d.length?(q.o||sh([q.a,...q.d])):0;
+c.innerHTML=`<div class="bar"><i class="pbf" style="width:${gi/GQ.length*100}%"></i></div><p class="qi">${LV[gl-1][0]} Câu ${gi+1}/${GQ.length} · Unit ${q.u+1} · ⭐ ${gs}</p><p class="qi" style="color:var(--teal);margin-top:0">${q.o?"Trắc nghiệm":"Tự luận: gõ đáp án"}</p><div class="qp">${esc(q.q)}</div>`+(q.o?q.o.map((o,j)=>`<button class="op" data-j="${j}">${esc(o)}</button>`).join(""):`<input id="gt" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Gõ đáp án...">`)+`<p id="gf" aria-live="polite"></p><div class="pb"><button class="big b2" id="gc"${q.o?' style="display:none"':""}>✔ Kiểm tra</button></div>`;
+if(q.o)c.querySelectorAll(".op").forEach(b=>b.onclick=()=>gans(+b.dataset.j));else{const t=$("gt");t.focus();t.onkeydown=e=>{if(e.key==="Enter")gans(t.value)};$("gc").onclick=()=>gans(t.value)}}
+function gans(v){const q=GQ[gi];if(q.dn)return;let r;if(q.o)r=q.o[v]==q.a;else{if(!String(v).trim())return;r=q.a.split("/").some(a=>nz(a)==nz(v))}q.dn=1;if(r){gs+=10;gk++}else gw.push(q);
+const c=$("gcard");if(q.o)c.querySelectorAll(".op").forEach((b,j)=>{b.disabled=true;if(q.o[j]==q.a)b.classList.add("ok");else if(j==v)b.classList.add("no")});else{$("gt").disabled=true;$("gt").style.borderColor=r?"#27ae60":"#c0392b"}
+$("gf").className=r?"ok":"no";$("gf").textContent=r?"✅ Chính xác! +10":"❌ Đáp án đúng: "+q.a.split("/")[0];
+const b=$("gc");b.style.display="";b.textContent=gi+1>=GQ.length?"🏁 Xem kết quả":"Tiếp ▶";b.onclick=()=>{gi++;gask()};b.focus()}
+function gfin(){const n=GQ.length,p=n?Math.round(gk/n*100):0,k=gu+"-"+gl,b=ls.get("g8_pb",{});if(p>(b[k]||0)){b[k]=p;ls.set("g8_pb",b)}
+$("gcard").innerHTML=`<h3>${p>=80?"🏆":p>=60?"👍":"💪"} ${gk}/${n} câu đúng (${p}%)</h3>`+(gw.length?`<p class="qi">Cần ôn lại:</p>`+gw.map(q=>`<div class="wr">${esc(q.q)} → <b>${esc(q.a.split("/")[0])}</b></div>`).join(""):"")+`<div class="pb"><button class="big b2" id="g1">🔁 Làm lại</button>${p>=80&&gl<4?'<button class="big b1" id="g2">⬆️ Lên cấp</button>':""}</div><div class="pb"><button class="big b4" id="g3">🎚️ Chọn lại</button></div>`;
+$("g1").onclick=()=>gbegin(gl);if($("g2"))$("g2").onclick=()=>gbegin(gl+1);$("g3").onclick=gstart}
+/* ===== LUYỆN NGHE: 4 cấp độ – mỗi cấp một bài nghe, hình thức khác nhau (dùng giọng đọc có sẵn của trình duyệt) ===== */
+let Lk=0,LC=[],LQ=[],Ltok=0,Lpl=-1,Lend=0,LA=[],Lslow=ls.get("g8_lslow",0);
+const LAB="ABCDEF";
+const LN=[
+{n:"Cấp 1 · Nhận biết",f:"🖼️ Nghe câu ngắn – chọn tranh đúng",d:"6 câu đơn · nghe không giới hạn · tốc độ chậm",ty:"pic",pl:Infinity,rt:.8,g:"Bấm 🔊 để nghe từng câu, rồi chạm vào bức tranh đúng. Cuối cùng bấm Nộp bài.",items:[
+{t:"I like surfing the Internet in my free time.",vi:"Tớ thích lướt mạng vào thời gian rảnh.",o:["💻","📚","🎣"],a:0},
+{t:"Farmers are harvesting rice in the countryside.",vi:"Những người nông dân đang gặt lúa ở vùng nông thôn.",o:["🌾","🐄","🏭"],a:0},
+{t:"People hang colourful lanterns at Mid-Autumn Festival.",vi:"Mọi người treo đèn lồng đầy màu sắc vào dịp Tết Trung thu.",o:["🏮","🎄","🎃"],a:0},
+{t:"We should recycle plastic bottles to protect the environment.",vi:"Chúng ta nên tái chế chai nhựa để bảo vệ môi trường.",o:["♻️","🔥","🚗"],a:0},
+{t:"The heavy rain caused a flood in the village.",vi:"Trận mưa lớn gây ra lũ lụt ở làng.",o:["🌊","🌋","🌪️"],a:0},
+{t:"Scientists use telescopes to study the stars.",vi:"Các nhà khoa học dùng kính thiên văn để nghiên cứu các vì sao.",o:["🔭","🔬","🧪"],a:0}]},
+{n:"Cấp 2 · Thông hiểu",f:"📋 Nghe hội thoại – điền thông tin vào phiếu",d:"2 người nói · 5 chỗ trống · nghe tối đa 3 lần",ty:"form",pl:3,rt:.85,sp:["Homestay","Quang"],g:"Quang gọi điện đặt phòng ở một homestay vùng núi. Nghe và điền thông tin còn thiếu vào phiếu đặt phòng (một hoặc hai từ, hoặc một số). Chú ý: Quang đổi ý về số đêm!",title:"🏡 BOOKING FORM – SAPA HOMESTAY",ex:"Name: Quang (ví dụ)",
+lines:[[0,"Good morning, Sapa Homestay. How can I help you?"],[1,"Hello. I'd like to book a room for the school holiday, please. My name is Quang."],[0,"Of course. How many people are there in your group?"],[1,"There are five of us: my parents, my sister, my grandmother and me."],[0,"OK. And how many nights would you like to stay?"],[1,"Three nights, please. Oh, wait. My father has to go back to work on Friday, so let's make it two nights."],[0,"No problem. Two nights. You can arrive on Wednesday afternoon."],[1,"Great. How much is the room?"],[0,"It costs six hundred thousand dong a night for the whole family. Breakfast is free."],[1,"That's fine. Can we learn to make traditional cakes?"],[0,"Yes, of course. Our Tay hosts will teach you on Thursday morning."],[1,"Wonderful. Thank you very much!"],[0,"You're welcome. We look forward to seeing you."]],
+items:[{l:"Number of people",a:"5/five"},{l:"Number of nights",a:"2/two"},{l:"Arrival day",a:"Wednesday"},{l:"Price per night",a:"600000/600,000/six hundred thousand",s:"dong"},{l:"Free meal",a:"breakfast"}],
+vi:"Quang đặt phòng cho 5 người, ban đầu định ở 3 đêm nhưng đổi thành 2 đêm, đến vào chiều thứ Tư; giá 600.000 đồng/đêm cho cả gia đình, miễn phí bữa sáng; sáng thứ Năm được học làm bánh truyền thống."},
+{n:"Cấp 3 · Vận dụng",f:"🔗 Nghe 4 người kể chuyện – nối với loại thiên tai",d:"4 đoạn độc thoại ngắn · 6 lựa chọn (có 2 đáp án thừa) · mỗi đoạn nghe tối đa 2 lần",ty:"match",pl:2,rt:.9,g:"Bốn bạn kể về thiên tai mà mình từng gặp, nhưng không gọi thẳng tên! Nghe và chọn đúng loại thiên tai cho từng người. Chú ý: có hai lựa chọn thừa và các bạn có thể nhắc đến cả hiện tượng KHÔNG xảy ra!",
+opts:[["🌊","flood"],["⛈️","storm"],["🏚️","earthquake"],["🏜️","drought"],["🌋","volcano"],["🔥","forest fire"]],
+clips:[{w:"Nam",s:0,a:3,t:"I'm Nam. Last summer it didn't rain for three months. The rivers dried up, and the farmers in my village had no water for their rice."},
+{w:"Lan",s:1,a:2,t:"My name's Lan. One night the ground suddenly began to shake. The pictures fell from the wall, and we ran out into the street."},
+{w:"Quan",s:0,a:1,t:"I'm Quan. The wind was very strong, and it blew the roofs off some houses. There was a lot of rain, but, luckily, the water didn't come into our village."},
+{w:"Mai",s:1,a:0,t:"I'm Mai. It rained for five days, and the river rose quickly. Water came into our house, and we had to move to the second floor."}]},
+{n:"Cấp 4 · Vận dụng cao",f:"📻 Nghe phỏng vấn radio – trắc nghiệm chi tiết & suy luận",d:"Hội thoại dài 13 lượt · 5 câu hỏi · chỉ nghe tối đa 2 lần",ty:"mcq",pl:2,rt:.95,sp:["Reporter","Minh"],g:"Nghe chương trình Science Today phỏng vấn Minh – chủ nhân sáng chế thùng rác thông minh của trường, rồi chọn đáp án đúng. Chú ý các con số và lý do.",
+lines:[[0,"Welcome to Science Today. Our guest is Minh, a student from Hai Phong who has just won a prize for a school invention. Hello, Minh."],[1,"Hello. I'm very happy to be here."],[0,"Minh, what did you invent?"],[1,"It's a smart rubbish bin. It opens by itself when someone comes near, and a voice tells you whether to put the rubbish in the plastic bin or the paper bin."],[0,"Why did you make it?"],[1,"In my school, students often put rubbish in the wrong bins. That made recycling difficult, so I wanted to find a simple solution."],[0,"How long did it take you?"],[1,"About four months. I worked on it every weekend, and my science teacher helped me with the electric parts."],[0,"Does it need a lot of electricity?"],[1,"No, it doesn't. It uses a small solar panel on the top, so we don't pay for electricity."],[0,"What are your plans for the future?"],[1,"Next year I'm going to make a bigger bin for the school gate."],[0,"That's wonderful. Thank you, Minh, and good luck!"]],
+items:[{q:"What does Minh's invention do?",o:["It opens by itself and tells people where to put rubbish.","It sorts the rubbish into different bins automatically.","It carries rubbish to the school gate."]},
+{q:"Why did Minh make the bin?",o:["Students often put rubbish in the wrong bins.","His school had no rubbish bins.","His teacher asked him to join a contest."]},
+{q:"How long did it take Minh to make the bin?",o:["About four months.","About four weeks.","About four years."]},
+{q:"Where does the bin get its electricity?",o:["From a small solar panel.","From batteries that students change every week.","From the school's power system."]},
+{q:"What is Minh going to do next year?",o:["Make a bigger bin for the school gate.","Make a solar panel for his house.","Study science in another city."]}],
+vi:"Minh (Hải Phòng) giành giải với thùng rác thông minh: tự mở khi có người đến gần và có giọng nói hướng dẫn bỏ rác nhựa hay giấy; em làm vì học sinh hay bỏ rác sai thùng; mất khoảng 4 tháng, dùng tấm pin mặt trời nhỏ nên không tốn tiền điện; năm sau em định làm một thùng lớn hơn đặt ở cổng trường."}
+];
+// Lời thoại / đáp án hiện sau khi nộp bài (hoặc ngay từ đầu nếu trình duyệt không có giọng đọc)
+const trx=t=>`<details class="tr" open><summary>📜 Lời thoại (transcript)</summary>`+(t.ty=="pic"?t.items.map(q=>`<p>${esc(q.t)}<br><small>${esc(q.vi)}</small></p>`):t.ty=="match"?t.clips.map(q=>`<p><b>${q.w}:</b> ${esc(q.t)}</p>`):t.lines.map(a=>`<p><b>${t.sp[a[0]]}:</b> ${esc(a[1])}</p>`)).join("")+(t.vi?`<p><small>📝 ${esc(t.vi)}</small></p>`:"")+`</details>`;
+function lstop(){Ltok++;Lpl=-1;if(TTS)speechSynthesis.cancel()}
+function lref(){document.querySelectorAll("#gcard .lp").forEach(b=>{const i=+b.dataset.c,c=LC[i];if(!c)return;const p=Lpl==i;b.disabled=!TTS||p||c.left<=0;b.textContent=p?"🔊 Đang phát…":c.left<=0?"🔇 Hết lượt nghe":c.left==Infinity?"🔊 Nghe":"🔊 Nghe (còn "+c.left+" lần)"})}
+function lplay(i){const c=LC[i];if(!TTS||!c||c.left<=0||Lpl==i)return;lstop();const tok=Ltok;if(c.left!=Infinity)c.left--;Lpl=i;LA=[];
+c.lines.forEach((a,k)=>{const u=new SpeechSynthesisUtterance(a[1]);u.lang="en-US";u.rate=c.rt*(Lslow?.75:1);u.pitch=a[0]?1.2:.85;
+if(k==c.lines.length-1)u.onend=u.onerror=()=>{if(tok==Ltok){Lpl=-1;lref()}};LA.push(u);speechSynthesis.speak(u)});lref()}
+function lgo(k){if(k>0&&!unlocked()){$("pw").value="";$("err").textContent="";$("lock").style.display="flex";$("pw").focus();pend=0;return}lbegin(k)}
+function lstart(){lstop();const b=ls.get("g8_lb",{}),c=$("gcard");c.classList.remove("d");
+c.innerHTML=`<h3>🎧 Luyện kỹ năng nghe</h3><p class="qi" style="text-align:center">4 cấp độ · mỗi cấp một bài nghe với hình thức khác nhau · thang điểm 10</p>`+(TTS?"":`<div class="rl">⚠️ Trình duyệt này chưa hỗ trợ giọng đọc. Hãy dùng Chrome, Edge hoặc Safari để nghe.</div>`)+LN.map((t,k)=>`<button class="lvb" data-k="${k}"><i>${LV[k][0]}</i><span><strong>${t.n}</strong><small>${t.f}<br>${t.d}</small></span><em>${k>0&&!unlocked()?"🔒":b[k]!=null?b[k]+"/10":""}</em></button>`).join("");
+c.querySelectorAll(".lvb").forEach(x=>x.onclick=()=>lgo(+x.dataset.k))}
+function lbegin(k){const t=LN[k],c=$("gcard");lstop();Lk=k;Lend=0;LC=[];
+const add=l=>LC.push({lines:l,left:t.pl,rt:t.rt})-1;let body="",bar="";
+if(t.ty=="pic"){LQ=t.items.map(q=>{const o=sh(q.o.map((e,x)=>({e,ok:x==q.a})));return{ci:add([[0,q.t]]),o,a:o.findIndex(z=>z.ok),t:q.t,vi:q.vi}});
+body=LQ.map((q,j)=>`<div class="lq" data-i="${j}"><p class="qi">Câu ${j+1}</p><button class="lp" data-c="${q.ci}"></button><div class="pk">${q.o.map((z,y)=>`<button data-j="${y}" aria-label="Hình ${y+1}">${z.e}</button>`).join("")}</div><p class="lx"></p></div>`).join("")}
+else if(t.ty=="match"){LQ=t.clips.map(q=>({ci:add([[q.s,q.t]]),a:q.a,w:q.w,t:q.t}));
+body=`<div class="ps">${t.opts.map((o,x)=>`<b>${LAB[x]}.</b> ${o[0]} ${o[1]}`).join(" &nbsp;·&nbsp; ")}</div>`+LQ.map((q,j)=>`<div class="lq" data-i="${j}"><p class="qi">Người nói ${j+1}</p><button class="lp" data-c="${q.ci}"></button><select aria-label="Chọn nội dung cho người nói ${j+1}"><option value="">— chọn đáp án —</option>${t.opts.map((o,x)=>`<option value="${x}">${LAB[x]}. ${o[0]} ${o[1]}</option>`).join("")}</select><p class="lx"></p></div>`).join("")}
+else{bar=`<button class="lp" data-c="${add(t.lines)}"></button>`;
+if(t.ty=="form"){LQ=t.items.map(q=>({a:q.a}));body=`<div class="ps"><b>${t.title}</b><br>${t.ex}</div>`+t.items.map((q,j)=>`<div class="lq" data-i="${j}"><div class="fm"><label for="ln_i${j}">${j+1}. ${q.l}:</label>${q.p?`<b>${q.p}</b>`:""}<input id="ln_i${j}" autocomplete="off" autocapitalize="none" spellcheck="false">${q.s?`<b>${q.s}</b>`:""}</div><p class="lx"></p></div>`).join("")}
+else{LQ=t.items.map(q=>{const o=sh(q.o);return{o,a:o.indexOf(q.o[0])}});body=LQ.map((q,j)=>`<div class="lq" data-i="${j}"><p class="qp" style="font-size:1rem;text-align:left">Câu ${j+1}. ${esc(t.items[j].q)}</p>${q.o.map((x,y)=>`<button class="op" data-j="${y}">${"ABC"[y]}. ${esc(x)}</button>`).join("")}<p class="lx"></p></div>`).join("")}}
+c.classList.remove("d");
+c.innerHTML=`<div class="tmr" id="ln_bar">${bar}<button class="sl${Lslow?" on":""}" id="ln_sl">🐢 Nghe chậm</button></div><h3>${LV[k][0]} ${t.n}</h3><p class="qi" style="text-align:center">${t.f}</p><div class="rl">${t.g}</div><div id="ln_res" class="rl" style="display:none"></div>`+(TTS?"":`<div class="rl">⚠️ Trình duyệt chưa hỗ trợ giọng đọc nên không phát được âm thanh. Hãy dùng Chrome, Edge hoặc Safari – hoặc đọc lời thoại dưới đây để làm bài.</div>`+trx(t))+body+`<div class="pb"><button class="big b2" id="ln_sub">✔ Nộp bài</button></div>`;
+c.querySelectorAll(".lp").forEach(b=>b.onclick=()=>lplay(+b.dataset.c));
+$("ln_sl").onclick=()=>{Lslow=Lslow?0:1;ls.set("g8_lslow",Lslow);$("ln_sl").classList.toggle("on",!!Lslow)};
+const pick=sel=>c.querySelectorAll(".lq").forEach(x=>x.querySelectorAll(sel).forEach(b=>b.onclick=()=>{if(Lend)return;LQ[+x.dataset.i].v=+b.dataset.j;x.querySelectorAll(sel).forEach(y=>y.classList.toggle("sel",y==b))}));
+if(t.ty=="pic")pick(".pk button");if(t.ty=="mcq")pick(".op");
+$("ln_sub").onclick=lsub;lref();scrollTo(0,0)}
+function lsub(){if(Lend)return;lstop();Lend=1;const t=LN[Lk],c=$("gcard");let ok=0;
+c.querySelectorAll(".lq").forEach(x=>{const q=LQ[+x.dataset.i],fx=x.querySelector(".lx");let r=0,a="";
+if(t.ty=="pic"){r=q.v==q.a;x.querySelectorAll(".pk button").forEach((b,y)=>{b.disabled=true;b.classList.remove("sel");if(y==q.a)b.classList.add("ok");else if(y==q.v)b.classList.add("no")});a=esc(q.t)+"<br><small>"+esc(q.vi)+"</small>"}
+else if(t.ty=="match"){const s=x.querySelector("select"),o=t.opts[q.a];r=s.value!==""&&+s.value==q.a;s.disabled=true;s.style.borderColor=r?"#27ae60":"#c0392b";a="Đáp án: <b>"+LAB[q.a]+". "+o[0]+" "+o[1]+"</b><br><small>"+q.w+": "+esc(q.t)+"</small>"}
+else if(t.ty=="form"){const n=x.querySelector("input"),f=s=>nz(s).replace(/\s/g,"");r=!!n.value.trim()&&q.a.split("/").some(z=>f(z)==f(n.value));n.disabled=true;n.style.borderColor=r?"#27ae60":"#c0392b";a="Đáp án: <b>"+esc(q.a.split("/")[0])+"</b>"}
+else{r=q.v==q.a;x.querySelectorAll(".op").forEach((b,y)=>{b.disabled=true;b.classList.remove("sel");if(y==q.a)b.classList.add("ok");else if(y==q.v)b.classList.add("no")});a="Đáp án: <b>"+"ABC"[q.a]+". "+esc(q.o[q.a])+"</b>"}
+if(r)ok++;fx.className="lx on "+(r?"ok":"no");fx.innerHTML=(r?"✅ ":"❌ ")+a});
+const n=LQ.length,s=Math.round(ok/n*100)/10,b=ls.get("g8_lb",{});if(s>(b[Lk]||0)){b[Lk]=s;ls.set("g8_lb",b)}
+LC.forEach(z=>z.left=Infinity);lref();
+const r=$("ln_res");r.style.display="block";r.innerHTML=`${s>=8?"🏆":s>=5?"👍":"💪"} <b>${ok}/${n} câu đúng · ${s}/10</b> — ${s>=8?(Lk<3?"Rất tốt! Hãy thử cấp cao hơn.":"Xuất sắc! Bạn nghe rất tốt."):s>=5?"Khá ổn – nghe lại và đọc lời thoại để rút kinh nghiệm.":"Hãy nghe lại (bấm 🔊) và đọc lời thoại, rồi làm lại nhé."}`;
+const pb=$("ln_sub").parentNode;
+if(TTS&&(t.ty=="form"||t.ty=="mcq"))pb.insertAdjacentHTML("beforebegin",trx(t));
+pb.outerHTML=`<div class="pb"><button class="big b2" id="ln_a">🔁 Làm lại</button>${s>=8&&Lk<3?'<button class="big b1" id="ln_b">⬆️ Lên cấp</button>':""}</div><div class="pb"><button class="big b4" id="ln_c">🎚️ Chọn cấp khác</button></div>`;
+$("ln_a").onclick=()=>lbegin(Lk);if($("ln_b"))$("ln_b").onclick=()=>lgo(Lk+1);$("ln_c").onclick=lstart;scrollTo(0,0)}
+/* ----- Kiểm tra: 6 phần theo cấu trúc đề THPT 2026 (rút gọn 12 câu) ----- */
+const PT=["Part 1 · Leaflet: choose the best option for each blank","Part 2 · Arrange the sentences into a meaningful exchange/text","Part 3 · Choose the best clause/phrase to complete each sentence","Part 4 · Reading: choose the best answer","Part 5 · Advertisement: choose the best option for each blank","Part 6 · Reading: choose the best answer"];
+const TS=[
+{n:"Đề 1 · Nhận biết",d:"Unit 1–12 · từ vựng quen thuộc, câu đơn giản",p:[
+["LEISURE CLUB: Do you (1)____ playing sports in your free time? We are open every weekend (2)____ 8 a.m. to 5 p.m.",`(1)|enjoy|enjoys|to enjoy|enjoying
+(2)|from|at|in|on`],
+["",`a. Yes, I'd love to. b. Would you like to go cycling with me? c. Great! See you at 7.|b-a-c|a-b-c|c-b-a|b-c-a
+a. I like the fresh air. b. Do you like life in the countryside? c. Yes, I do.|b-c-a|a-b-c|c-a-b|a-c-b`],
+["",`Although it was raining, ___.|we still went to the festival|so we stayed at home|because we went|and we not go
+If we recycle paper, ___.|we will save trees|we saved trees|we would saved trees|we saving trees`],
+["Mai lives in a small village. Her house is near a river. She likes helping her grandmother in the garden, and she enjoys reading books in the evening.",`Where does Mai live?|In a village|In a city|In the mountains|On an island
+Mai enjoys ___ in the evening.|reading books|helping her grandmother|going fishing|watching TV`],
+["SALE OFF! Buy (9)____ new school bag today and get (10)____ pencils for free. Visit our shop on Tran Phu Street.",`(9)|a|an|many|much
+(10)|some|a|much|an`],
+["A typhoon hit the village last night. Strong winds blew down many trees, and heavy rain caused a flood. Fortunately, everyone had moved to a safe shelter before the storm arrived, so nobody was hurt.",`What did the strong winds do?|Blew down many trees|Moved the shelter|Caused a fire|Closed the school
+The word "Fortunately" is closest in meaning to ___.|luckily|sadly|slowly|rarely`]]},
+{n:"Đề 2 · Thông hiểu",d:"Unit 1–12 · should/must, hiện tại hoàn thành, điều kiện 1",p:[
+["GO GREEN WEEK: If we (1)____ energy, we will protect our planet. Please turn off the lights when you (2)____ the room.",`(1)|save|saves|saved|saving
+(2)|leave|leaves|left|leaving`],
+["",`a. I have lived here for ten years. b. How long have you lived in this town? c. That's a long time!|b-a-c|a-b-c|c-a-b|b-c-a
+a. We will wear traditional clothes. b. Dear Lan, c. Our village festival is next Sunday.|b-c-a|a-b-c|c-b-a|b-a-c`],
+["",`I haven't seen him ___.|since last month|for last month|ago last month|at last month
+She was cooking dinner ___.|when the power went out|while the power went out|when the power was going out|while the power goes out`],
+["Teenagers should have a healthy lifestyle. They should eat fruit and vegetables, do exercise every day, and sleep at least eight hours. They shouldn't spend too much time on their phones.",`What is the passage mainly about?|Healthy habits for teenagers|Popular school subjects|New phones|Cooking tips
+According to the passage, teenagers shouldn't ___.|spend too much time on phones|eat vegetables|do exercise|sleep early`],
+["DISCOUNT DAY: Is this your first time shopping here? (9)____ you buy two shirts, you will get (10)____ discount of 20%.",`(9)|If|Although|Because|But
+(10)|a|an|many|much`],
+["Viet Nam has 54 ethnic groups. The Kinh people are the largest group, and the others live mostly in the mountains. Each group has its own language, clothes and festivals, which makes Vietnamese culture rich and diverse.",`How many ethnic groups does Viet Nam have?|54|45|63|12
+The word "diverse" is closest in meaning to ___.|varied|boring|small|quiet`]]},
+{n:"Đề 3 · Vận dụng",d:"Unit 1–12 · quá khứ tiếp diễn, bị động, tương lai",p:[
+["SPACE CAMP FOR KIDS: Tomorrow we (1)____ launch a model rocket. Don't (2)____ to bring your camera!",`(1)|are going to|going to|will to|are go to
+(2)|forget|forgot|forgetting|forgets`],
+["",`a. Mine is a smartwatch. b. Yours looks great! c. What is your favourite gadget?|c-a-b|a-b-c|b-c-a|c-b-a
+a. However, it is not free. b. The new app helps students learn English. c. It also gives instant feedback.|b-c-a|a-b-c|c-a-b|b-a-c`],
+["",`If it rains tomorrow, ___.|we will cancel the picnic|we would cancel the picnic|we cancelled the picnic|we cancelling the picnic
+My brother likes ___.|playing video games|play video games|played video games|to playing video games`],
+["Robots are becoming more common in our lives. In the future, they will help doctors, clean houses and even teach children. Some people worry that robots will take away jobs, but others believe they will create new ones.",`What will robots do in the future?|Help doctors and teach children|Replace all people|Stop working|Build cities only
+The word "others" refers to ___.|people|robots|jobs|children`],
+["TECH SHOP: This tablet (9)____ designed in Viet Nam. It is (10)____ than any other model.",`(9)|is|are|were|be
+(10)|lighter|light|lightest|more light`],
+["Earthquakes happen suddenly, so people should prepare in advance. They should keep an emergency kit, learn safe places in the house, and practise drills. When an earthquake is happening, they must stay away from windows.",`When an earthquake is happening, people must ___.|stay away from windows|stand near windows|use the lift|go to the roof
+Which is NOT suggested?|Moving to another city|Keeping an emergency kit|Practising drills|Learning safe places`]]},
+{n:"Đề 4 · Vận dụng cao",d:"Unit 1–12 · liên từ, suy luận, quy chiếu, tổng hợp",p:[
+["ECO TOUR: Our beaches (1)____ clean for years, and we want to keep them that way. If visitors (2)____ rubbish, we will ask them to leave.",`(1)|have stayed|stayed|stay|are staying
+(2)|leave|will leave|left|leaving`],
+["",`a. Oh no! Did you get wet? b. I was waiting for the bus when it began to rain. c. What happened to you this morning?|c-b-a|a-b-c|b-c-a|c-a-b
+a. As a result, many families lost their homes. b. A big flood hit the town last week. c. However, volunteers arrived quickly to help.|b-a-c|a-b-c|c-a-b|b-c-a`],
+["",`She has lived here ___.|for more than ten years|since more than ten years|ago ten years|in ten years
+___ the festival is very crowded, many tourists come every year.|Although|Because|So|Unless`],
+["Although online shopping is convenient, it has some disadvantages. Customers cannot touch the products before buying them, and delivery can be late. Therefore, many people still prefer shopping in stores, especially for clothes.",`The word "convenient" is closest in meaning to ___.|easy to use|expensive|dangerous|slow
+What can be inferred from the passage?|Some people still like buying clothes in person|Nobody shops online|Delivery is always fast|Stores are closing`],
+["BIG SALE: Whether you need a new phone (9)____ a cheap charger, we have everything. (10)____ the shop is small, its prices are the lowest in town.",`(9)|or|and|but|so
+(10)|Although|Because|Unless|If`],
+["Scientists think life might exist on other planets. Mars, for example, once had water, which is necessary for life. However, nobody has found real evidence yet, so researchers will keep sending robots to explore.",`The word "which" in line 2 refers to ___.|water|Mars|life|evidence
+Which statement is TRUE?|No real evidence of life on Mars has been found yet|Scientists have found aliens|Mars has no history of water|Robots will stop exploring`]]}
+];
+function tstart(){const b=ls.get("g8_tb",{}),c=$("gcard");
+c.innerHTML=`<h3>📝 Kiểm tra theo cấu trúc đề THPT 2026</h3><p class="qi" style="text-align:center">6 phần như đề thi chính thức · 12 câu · 15 phút · thang điểm 10</p>`+TS.map((t,k)=>`<button class="lvb" data-k="${k}"><i>${LV[k][0]}</i><span><strong>${t.n}</strong><small>${t.d}</small></span><em>${k>0&&!unlocked()?"🔒":b[k]!=null?b[k]+"/10":""}</em></button>`).join("");
+c.querySelectorAll(".lvb").forEach(x=>x.onclick=()=>{const k=+x.dataset.k;if(k>0&&!unlocked()){$("pw").value="";$("err").textContent="";$("lock").style.display="flex";$("pw").focus();pend=0;return}tbegin(k)})}
+function tbegin(k){const t=TS[k];let n=0;tn=k;TQ=[];
+const h=t.p.map((p,j)=>`<h4>${PT[j]}</h4>`+(p[0]?`<div class="ps">${esc(p[0])}</div>`:"")+p[1].trim().split("\n").map(s=>{const[q,a,...d]=s.split("|"),o=sh([a,...d]),i=n++;TQ.push({a,o});return`<div class="tq" data-i="${i}"><p class="qp" style="font-size:1rem;text-align:left">Câu ${i+1}. ${esc(q)}</p>${o.map((x,y)=>`<button class="op" data-j="${y}">${"ABCD"[y]}. ${esc(x)}</button>`).join("")}</div>`}).join("")).join("");
+const c=$("gcard");c.innerHTML=`<div id="tm" class="qi tmr">⏱ 15:00</div><h3>${t.n}</h3>${h}<div class="pb"><button class="big b2" id="ts">✔ Nộp bài</button></div>`;
+c.querySelectorAll(".tq").forEach(x=>x.querySelectorAll(".op").forEach(b=>b.onclick=()=>{TQ[+x.dataset.i].v=+b.dataset.j;x.querySelectorAll(".op").forEach(y=>y.classList.toggle("sel",y==b))}));
+$("ts").onclick=tsubmit;tl=900;clearInterval(tt);tt=setInterval(()=>{tl--;$("tm").textContent="⏱ "+Math.floor(tl/60)+":"+String(tl%60).padStart(2,"0");if(tl<=0)tsubmit()},1000);scrollTo(0,0)}
+function tsubmit(){clearInterval(tt);let c=0;
+document.querySelectorAll("#gcard .tq").forEach(x=>{const q=TQ[+x.dataset.i];x.querySelectorAll(".op").forEach((b,j)=>{b.disabled=true;if(q.o[j]==q.a)b.classList.add("ok");else if(j==q.v)b.classList.add("no")});if(q.o[q.v]==q.a)c++});
+const s=Math.round(c/TQ.length*100)/10,b=ls.get("g8_tb",{});if(s>(b[tn]||0)){b[tn]=s;ls.set("g8_tb",b)}
+$("tm").innerHTML=`${s>=8?"🏆":s>=5?"👍":"💪"} ${c}/${TQ.length} câu đúng · <b>${s}/10</b>`;$("ts").textContent="↩ Chọn đề khác";$("ts").onclick=tstart;scrollTo(0,0)}
+
+load();
+</script>
+</body>
+</html>
